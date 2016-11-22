@@ -161,3 +161,21 @@ def string_compression(string):
         return encoded
     else:
         return string
+
+# 1.7 Rotate Matrix: Given an image represented by an NxN matrix, where each
+# pixel is in the image is 4 bytes, write a method to rotate the image by 90
+# degrees. Can you do this in place?
+def rotate_matrix(matrix):
+    pass
+
+# 1.8 Zero Matrix: Write an algorithm such that if an element in an MxN matrix
+# is 0, its entire row and column are set to 0.
+def zero_matrix(matrix):
+    pass
+
+# 1.9 String Rotation: Assume you have a method isSubstring which checks if one
+# word is a substring of another. Given two strings, s1 and s2, write code to
+# check if s2 is a rotation of s1 using only one call to isSubstring (e.g.
+# "waterbottle" is a rotation of "erbottlewat").
+def string_rotation(s1, s2):
+    pass

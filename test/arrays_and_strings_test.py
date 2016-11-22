@@ -95,5 +95,14 @@ class StringCompressionTest(unittest.TestCase):
     def test_mixed_case(self):
         self.assertEqual(subject.string_compression('aaaAAAaaa'), 'a3A3a3')
 
+class RotateMatrixTest(unittest.TestCase):
+    pass
+
+class ZeroMatrixTest(unittest.TestCase):
+    pass
+
+class StringRotationTest(unittest.TestCase):
+    pass
+
 if __name__ == '__main__':
     unittest.main()
