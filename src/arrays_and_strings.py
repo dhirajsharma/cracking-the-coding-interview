@@ -1,9 +1,7 @@
 CHAPTER = 1
 
-# 1.1
-# Is Unique:
-# - Implement an alogirthm to determine if a string has all unique characters.
-# - What if you cannot use additional data structures?
+# 1.1 Is Unique: Implement an alogirthm to determine if a string has all unique
+# characters. What if you cannot use additional data structures?
 def is_unique(string):
     # O(1) trivial case
     if len(string) > 128:
@@ -37,8 +35,7 @@ def is_unique_without_hash(string):
     return True
 
 
-# 1.2
-# Check Permutation: Given two strings, write a method to decide if one is a
+# 1.2 Check Permutation: Given two strings, write a method to decide if one is a
 # permutation of the other.
 def check_permutation(a, b):
     # O(1) time trivial solution
