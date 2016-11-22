@@ -31,5 +31,16 @@ class CheckPermutationTest(unittest.TestCase):
     def test_uneven_lengths(self):
         self.assertEqual(subject.check_permutation('awejfoiawjef', 'ajkwlf'), False)
 
+class URLifyTest(unittest.TestCase):
+    def test_no_spaces(self):
+        self.assertEqual(subject.urlify('abcdefgh'), 'abcdefgh')
+
+    def test_one_space(self):
+        self.assertEqual(subject.urlify('abc cba  '), 'abc%20cba')
+
+    def test_multiple_spaces(self):
+        self.assertEqual(subject.urlify('abc  cba bca      '), 'abc%20%20cba%20bca')
+
+
 if __name__ == '__main__':
     unittest.main()
