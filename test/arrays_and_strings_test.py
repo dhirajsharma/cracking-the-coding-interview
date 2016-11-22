@@ -54,5 +54,33 @@ class PalindromePermutationTest(unittest.TestCase):
     def test_really_long_string(self):
         self.assertEqual(subject.palindrome_permutation('a' * 10**6 + 'b'), True)
 
+class OneOrZeroAwayTest(unittest.TestCase):
+    def test_empty(self):
+        self.assertEqual(subject.one_or_zero_away('', ''), True)
+
+    def test_trivial(self):
+        self.assertEqual(subject.one_or_zero_away('abc', 'abcde'), False)
+
+    def test_same(self):
+        self.assertEqual(subject.one_or_zero_away('abc', 'abc'), True)
+
+    def test_remove(self):
+        self.assertEqual(subject.one_or_zero_away('pale', 'ple'), True)
+
+    def test_insert(self):
+        self.assertEqual(subject.one_or_zero_away('pale', 'pales'), True)
+
+    def test_replace(self):
+        self.assertEqual(subject.one_or_zero_away('pale', 'pile'), True)
+
+    def test_two_edits(self):
+        self.assertEqual(subject.one_or_zero_away('pale', 'bake'), False)
+
+    def test_three_edits(self):
+        self.assertEqual(subject.one_or_zero_away('pale', 'bike'), False)
+
+    def test_reordered_edits(self):
+        self.assertEqual(subject.one_or_zero_away('pale', 'elap'), False)
+
 if __name__ == '__main__':
     unittest.main()

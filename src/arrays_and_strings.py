@@ -90,3 +90,45 @@ def palindrome_permutation(phrase):
             return False
 
     return True
+
+# 1.5 One Away: There are three types of edits that can be performed on strings:
+# insert a character, remove a character, or replace a character. Given two
+# strings, write a function to check if they are one edit (or zero edits) away.
+def one_or_zero_away(a, b):
+    def check_one_replace(a, b):
+        assert len(a) == len(b)
+        replace = False
+        for i in range(len(a)):
+            if a[i] != b[i]:
+                if replace:
+                    return False
+                else:
+                    replace = True
+        return True
+
+    def check_one_insert(a, b):
+        i = 0
+        j = 0
+
+        while i < len(a) and j < len(b):
+            if a[i] != b[j]:
+                if i != j:
+                    return False
+                j += 1
+            else:
+                i += 1
+                j += 1
+
+        return True
+
+    # Assumptions: all characters are letters
+    delta = len(a) - len(b)
+
+    if delta == 0:
+        return check_one_replace(a, b)
+    elif delta == 1:
+        return check_one_insert(b, a)
+    elif delta == -1:
+        return check_one_insert(a, b)
+    else:
+        return False
