@@ -1,6 +1,5 @@
 CHAPTER = 1
 
-
 # 1.1
 # Is Unique:
 # - Implement an alogirthm to determine if a string has all unique characters.
@@ -36,3 +35,32 @@ def is_unique_without_hash(string):
             return False
 
     return True
+
+
+# 1.2
+# Check Permutation: Given two strings, write a method to decide if one is a
+# permutation of the other.
+def check_permutation(a, b):
+    # O(1) time trivial solution
+    if len(a) != len(b):
+        return False
+
+    # O(2*log(n))
+    return sorted(a) == sorted(b)
+
+def check_permutation_alternate(a, b):
+    from collections import defaultdict
+
+    # O(1) time trivial solution
+    if len(a) != len(b):
+        return False
+
+    counts = defaultdict(lambda: 0)
+    for char in a:
+        counts[char] += 1
+    for char in b:
+        counts[char] -= 1
+        if counts[char] < 0:
+            return False
+
+    return sum(counts.values()) == 0
