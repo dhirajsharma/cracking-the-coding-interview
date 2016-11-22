@@ -41,6 +41,18 @@ class URLifyTest(unittest.TestCase):
     def test_multiple_spaces(self):
         self.assertEqual(subject.urlify('abc  cba bca      '), 'abc%20%20cba%20bca')
 
+class PalindromePermutationTest(unittest.TestCase):
+    def test_empty(self):
+        self.assertEqual(subject.palindrome_permutation(''), True)
+
+    def test_example(self):
+        self.assertEqual(subject.palindrome_permutation("Tact Coa"), True)
+
+    def test_not_palindrome(self):
+        self.assertEqual(subject.palindrome_permutation("A, Race. Car!"), False)
+
+    def test_really_long_string(self):
+        self.assertEqual(subject.palindrome_permutation('a' * 10**6 + 'b'), True)
 
 if __name__ == '__main__':
     unittest.main()

@@ -68,3 +68,25 @@ def check_permutation_alternate(a, b):
 def urlify(string):
     # return string.replace(' ', '%20')
     return ''.join([c if c != ' ' else '%20' for c in string.strip()])
+
+# 1.4 Palindrome Permutation: Given a string, write a function to check if it is
+# a permutation of a palindrome.
+def palindrome_permutation(phrase):
+    # O(n) time complexity
+    from string import ascii_lowercase
+    from collections import defaultdict
+
+    counts = defaultdict(lambda: 0)     # O(1) space
+    odds = 0
+
+    for char in phrase.lower():         # O(n) time
+        if char in ascii_lowercase:
+            counts[char] += 1
+
+    for char in counts:                 # O(26)
+        if counts[char] % 2 == 1:
+            odds += 1
+        if odds > 1:
+            return False
+
+    return True
