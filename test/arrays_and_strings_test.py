@@ -82,5 +82,18 @@ class OneOrZeroAwayTest(unittest.TestCase):
     def test_reordered_edits(self):
         self.assertEqual(subject.one_or_zero_away('pale', 'elap'), False)
 
+class StringCompressionTest(unittest.TestCase):
+    def test_empty(self):
+        self.assertEqual(subject.string_compression(''), '')
+
+    def test_would_be_smaller(self):
+        self.assertEqual(subject.string_compression('aabcccccaaa'), 'a2b1c5a3')
+
+    def test_would_be_larger(self):
+        self.assertEqual(subject.string_compression('abcdefg'), 'abcdefg')
+
+    def test_mixed_case(self):
+        self.assertEqual(subject.string_compression('aaaAAAaaa'), 'a3A3a3')
+
 if __name__ == '__main__':
     unittest.main()

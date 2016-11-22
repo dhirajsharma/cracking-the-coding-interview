@@ -132,3 +132,32 @@ def one_or_zero_away(a, b):
         return check_one_insert(a, b)
     else:
         return False
+
+# 1.6 String Compression: Implement a method to perform basic string compression
+# using the counts of repeated characters. For example, the string "aabccccaaa"
+# would become "a2b1c5a3". If the compressed string would not become smaller
+# than the original string, your method should return the original string. You
+# can assume the string has only uppercase and lowercase letters.
+def string_compression(string):
+    encoding = []
+
+    previous = None
+    count = 0
+    for i in range(len(string)):                            # O(n)
+        char = string[i]
+        if char != previous and previous is not None:
+            encoding.append(previous + str(count))
+            if len(''.join(encoding)) > len(string):
+                return string                               # Early return
+            count = 0
+        count += 1
+        previous = char
+
+    if previous is not None:
+        encoding.append(previous + str(count))
+
+    encoded = ''.join(encoding)
+    if len(string) > len(encoding):
+        return encoded
+    else:
+        return string
