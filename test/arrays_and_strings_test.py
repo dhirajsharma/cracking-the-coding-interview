@@ -125,7 +125,30 @@ class RotateMatrixTest(unittest.TestCase):
         self.assertEqual(subject.rotate_matrix(original), rotated)
 
 class ZeroMatrixTest(unittest.TestCase):
-    pass
+    def test_none(self):
+        original = [[1, 2, 3],
+                    [4, 5, 6],
+                    [7, 8, 9]]
+        self.assertEqual(subject.zero_matrix(original), original)
+
+    def test_one(self):
+        original = [[1, 2, 3],
+                    [4, 0, 6],
+                    [7, 8, 9]]
+        expected = [[1, 0, 3],
+                    [0, 0, 0],
+                    [7, 0, 9]]
+        self.assertEqual(subject.zero_matrix(original), expected)
+
+    def test_all(self):
+        original = [[0, 2, 3],
+                    [4, 0, 6],
+                    [7, 8, 0]]
+        expected = [[0, 0, 0],
+                    [0, 0, 0],
+                    [0, 0, 0]]
+        self.assertEqual(subject.zero_matrix(original), expected)
+
 
 class StringRotationTest(unittest.TestCase):
     pass

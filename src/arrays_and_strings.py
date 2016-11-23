@@ -177,7 +177,35 @@ def rotate_matrix(m):
 # 1.8 Zero Matrix: Write an algorithm such that if an element in an MxN matrix
 # is 0, its entire row and column are set to 0.
 def zero_matrix(matrix):
-    pass
+    rows = set(range(len(matrix)))
+    cols = set(range(len(matrix[0])))
+
+    row_zeros = set([])
+    col_zeros = set([])
+
+    for row in rows:
+        if row in row_zeros:
+            continue
+
+        for col in cols:
+            if col in col_zeros:
+                continue
+
+            if matrix[row][col] == 0:
+                row_zeros.add(row)
+                col_zeros.add(col)
+                break
+
+    for row in row_zeros:
+        for col in cols:
+            matrix[row][col] = 0
+
+    for col in col_zeros:
+        for row in rows - row_zeros:
+            matrix[row][col] = 0
+
+    return matrix
+
 
 # 1.9 String Rotation: Assume you have a method isSubstring which checks if one
 # word is a substring of another. Given two strings, s1 and s2, write code to
