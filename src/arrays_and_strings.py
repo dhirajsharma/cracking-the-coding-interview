@@ -3,7 +3,6 @@ CHAPTER = 1
 # 1.1 Is Unique: Implement an alogirthm to determine if a string has all unique
 # characters. What if you cannot use additional data structures?
 def is_unique(string):
-    # O(1) trivial case
     if len(string) > 128:
         return False
 
@@ -160,8 +159,20 @@ def string_compression(string):
 # 1.7 Rotate Matrix: Given an image represented by an NxN matrix, where each
 # pixel is in the image is 4 bytes, write a method to rotate the image by 90
 # degrees. Can you do this in place?
-def rotate_matrix(matrix):
-    pass
+def rotate_matrix(m):
+    try:
+        n = len(m)
+        assert n == len(m[0])
+    except (IndexError, AssertionError):
+        return False
+
+    for i in range(n/2):
+        a = n - 1 - i
+        for j in range(i, a):
+            b = j - i
+            m[i][j], m[a-b][i], m[a][a-b], m[j][a] = m[a-b][i], m[a][a-b], m[j][a], m[i][j]
+
+    return m
 
 # 1.8 Zero Matrix: Write an algorithm such that if an element in an MxN matrix
 # is 0, its entire row and column are set to 0.

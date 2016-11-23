@@ -96,7 +96,33 @@ class StringCompressionTest(unittest.TestCase):
         self.assertEqual(subject.string_compression('aaaAAAaaa'), 'a3A3a3')
 
 class RotateMatrixTest(unittest.TestCase):
-    pass
+    def test_empty(self):
+        self.assertEqual(subject.rotate_matrix([]), False)
+
+    def test_2_x_2(self):
+        original = [[1, 2], [3, 4]]
+        rotated  = [[3, 1], [4, 2]]
+        self.assertEqual(subject.rotate_matrix(original), rotated)
+
+    def test_3_x_3(self):
+        original = [[1, 2, 3],
+                    [4, 5, 6],
+                    [7, 8, 9]]
+        rotated  = [[7, 4, 1],
+                    [8, 5, 2],
+                    [9, 6, 3]]
+        self.assertEqual(subject.rotate_matrix(original), rotated)
+
+    def test_4_x_4(self):
+        original = [[1, 1, 1, 1],
+                    [2, 2, 2, 2],
+                    [3, 3, 3, 3],
+                    [4, 4, 4, 4]]
+        rotated  = [[4, 3, 2, 1],
+                    [4, 3, 2, 1],
+                    [4, 3, 2, 1],
+                    [4, 3, 2, 1]]
+        self.assertEqual(subject.rotate_matrix(original), rotated)
 
 class ZeroMatrixTest(unittest.TestCase):
     pass
