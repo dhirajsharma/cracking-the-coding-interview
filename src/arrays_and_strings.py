@@ -23,9 +23,8 @@ def is_unique_with_hash(string):
     return True
 
 def is_unique_without_hash(string):
-    # O(n*log(n)) time (sorted)
-    ordered = sorted(string)        # O(log(n))
-    for i in range(len(ordered)):   # O(n)
+    ordered = sorted(string)
+    for i in range(len(ordered)):
         if i >= len(ordered) - 1:
             continue
 
@@ -38,17 +37,14 @@ def is_unique_without_hash(string):
 # 1.2 Check Permutation: Given two strings, write a method to decide if one is a
 # permutation of the other.
 def check_permutation(a, b):
-    # O(1) time trivial solution
     if len(a) != len(b):
         return False
 
-    # O(2*log(n))
     return sorted(a) == sorted(b)
 
 def check_permutation_alternate(a, b):
     from collections import defaultdict
 
-    # O(1) time trivial solution
     if len(a) != len(b):
         return False
 
@@ -72,18 +68,17 @@ def urlify(string):
 # 1.4 Palindrome Permutation: Given a string, write a function to check if it is
 # a permutation of a palindrome.
 def palindrome_permutation(phrase):
-    # O(n) time complexity
     from string import ascii_lowercase
     from collections import defaultdict
 
-    counts = defaultdict(lambda: 0)     # O(1) space
+    counts = defaultdict(lambda: 0)
     odds = 0
 
-    for char in phrase.lower():         # O(n) time
+    for char in phrase.lower():
         if char in ascii_lowercase:
             counts[char] += 1
 
-    for char in counts:                 # O(26)
+    for char in counts:
         if counts[char] % 2 == 1:
             odds += 1
         if odds > 1:
@@ -94,33 +89,33 @@ def palindrome_permutation(phrase):
 # 1.5 One Away: There are three types of edits that can be performed on strings:
 # insert a character, remove a character, or replace a character. Given two
 # strings, write a function to check if they are one edit (or zero edits) away.
-def one_or_zero_away(a, b):
-    def check_one_replace(a, b):
-        assert len(a) == len(b)
-        replace = False
-        for i in range(len(a)):
-            if a[i] != b[i]:
-                if replace:
-                    return False
-                else:
-                    replace = True
-        return True
-
-    def check_one_insert(a, b):
-        i = 0
-        j = 0
-
-        while i < len(a) and j < len(b):
-            if a[i] != b[j]:
-                if i != j:
-                    return False
-                j += 1
+def check_one_replace(a, b):
+    assert len(a) == len(b)
+    replace = False
+    for i in range(len(a)):
+        if a[i] != b[i]:
+            if replace:
+                return False
             else:
-                i += 1
-                j += 1
+                replace = True
+    return True
 
-        return True
+def check_one_insert(a, b):
+    i = 0
+    j = 0
 
+    while i < len(a) and j < len(b):
+        if a[i] != b[j]:
+            if i != j:
+                return False
+            j += 1
+        else:
+            i += 1
+            j += 1
+
+    return True
+
+def one_or_zero_away(a, b):
     # Assumptions: all characters are letters
     delta = len(a) - len(b)
 
@@ -143,12 +138,12 @@ def string_compression(string):
 
     previous = None
     count = 0
-    for i in range(len(string)):                            # O(n)
+    for i in range(len(string)):
         char = string[i]
         if char != previous and previous is not None:
             encoding.append(previous + str(count))
             if len(''.join(encoding)) > len(string):
-                return string                               # Early return
+                return string
             count = 0
         count += 1
         previous = char
