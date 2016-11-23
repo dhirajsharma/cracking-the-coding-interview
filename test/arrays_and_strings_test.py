@@ -149,9 +149,12 @@ class ZeroMatrixTest(unittest.TestCase):
                     [0, 0, 0]]
         self.assertEqual(subject.zero_matrix(original), expected)
 
-
 class StringRotationTest(unittest.TestCase):
-    pass
+    def test_example(self):
+        self.assertEqual(subject.string_rotation('waterbottle', 'erbottlewat'), True)
+
+    def test_negative(self):
+        self.assertEqual(subject.string_rotation('waterbottle', 'erbottlewatt'), False)
 
 if __name__ == '__main__':
     unittest.main()
